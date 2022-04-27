@@ -25,7 +25,7 @@ Route::prefix('/app')->group(function(){
     //rota Clientes
     Route::get('/clientes', function(){ return 'Clientes';})->name('app.clientes');
     //rota Fornecedores
-    Route::get('/fornecedores', function(){ return 'Fornecedores';})->name('app.fornecedores');
+    Route::get('/fornecedores', 'App\Http\Controllers\FornecedorController@index')->name('app.fornecedores');
     //rota Produtos
     Route::get('/produtos', function(){ return 'Produtos';})->name('app.produtos');
 });
@@ -41,7 +41,9 @@ Route::get('/rota2',function(){
 })->name('site.rota2');
 
 //Route::redirect('/rota2','/rota1');
-//
+
+//Rota com parâmetros
+Route::get('/teste/{p1}/{p2}','App\Http\Controllers\TesteController@teste')->name('teste');
 
 Route::fallback(function(){
     echo 'Página acessada não existe. <a href="'.route('site.index').'">Clique aqui</a> para ir para página inicial';
