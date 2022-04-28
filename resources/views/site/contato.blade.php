@@ -9,4 +9,7 @@
     <li>
         <a href="{{route('site.contato')}}">Contato</a>
     </li>
+    <li>
+        <a href="{{route('app.fornecedores')}}">Fornecedores</a>
+    </li>
 </ul>
