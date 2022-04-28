@@ -11,6 +11,8 @@ Fornecedor: {{ $fornecedores[0]['nome'] }}
 <br>
 Status: {{ $fornecedores[0]['status'] }}
 <br>
+MSG: {{$msg}}
+<br>
 @if($fornecedores[0]['status'] == 'N')
     <h3> Fornecedor inativo </h3>
 @else
