@@ -7,28 +7,30 @@
 @endphp
 
 
-Fornecedor: {{ $fornecedores[0]['nome'] }}
-<br>
-Status: {{ $fornecedores[0]['status'] }}
-<br>
-MSG: {{$msg}}
-<br>
-@if($fornecedores[0]['status'] == 'N')
-    <h3> Fornecedor inativo </h3>
-@else
-    <h3> Fornecedor ativo </h3>
-@endif
-<br>
+@isset($fornecedores)
+    @for ($i = 0; isset($fornecedores[$i]); $i++)
+        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+        <br>
+        Status: {{ $fornecedores[$i]['status'] }}
+        <br>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido'}}
+        <br>
+        Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[0]['telefone'] ?? ''}}
+        @switch($fornecedores[$i]['ddd'])
+            @case ('11')
+                São Paulo - SP
+                @break
+            @case('85')
+                Fortaleza - CE
+                @break
+            @case ('88')
+                Interior - CE
+                @break
+            @default
+                Cidade não identificada
+        @endswitch
+        <hr>
+    @endfor
+@endisset
 
 
-@unless($fornecedores[0]['status'] == 'S')
-<h3> Fornecedor inativo </h3>
-@endunless
-
-@if(count($fornecedores) > 0 && count($fornecedores) < 10)
-    <h3>Existem alguns fornecedores cadastrados</h3>
-@elseif(count($fornecedores) > 10)
-    <h3>Existem vários fornecedores cadastrados</h3>
-@else
-    <h3>Ainda não existem fornecedores cadastrados</h3>
-@endif
