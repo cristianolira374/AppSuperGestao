@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\PrincipalController@principal')->name('site.index');
 //rota sobre-nós
 Route::get('/sobre-nos','App\Http\Controllers\SobreNosController@sobreNos')->name('site.sobrenos');
-//rota contato sem parâmetro
+//rota contato sem parâmetro - GET
 Route::get('/contato', 'App\Http\Controllers\ContatoController@contato')->name('site.contato');
+//rota contato sem parâmetro - POST
+Route::post('/contato', 'App\Http\Controllers\ContatoController@contato')->name('site.contato');
 //rota login
 Route::get('/login', function(){ return 'Login';})->name('site.login');
 
